@@ -3,7 +3,7 @@
   <head>
     <title>Splurty</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,29 +12,31 @@
   <body>
     <header class="row">
       <div class="col-3">
-        <%= link_to root_path do %>
-         <% end %>
         <%= link_to root_path, class: 'logo' do %>
           <div class="circle">
             <br />
-            You know
+            Steven
             <br />
-            you need
+            Universe
             <br />
-            to code
+            Quotes
           </div>
         <% end %>
       </div>
-      <div class="col col-sm-4 hidden-xs-down slogan">
-        Splurting out unsolicited wine quotes since 2019
+
+      <div class="col-4 hidden-sx-down slogan">
+        All hail sucrose.
       </div>
-      <div class="col-10 offset-1 offset-sm-0 col-sm-5 links">
+
+      <div class="col-10 offset-1 offset-1 offset-sm-0 col-sm-5 links">
         <!-- Button trigger modal -->
-  <%= link_to 'Contribute', '#', data: {toggle: 'modal', target: '#myModal'} %>
-        <%= link_to 'About', about_path %>
+        <%= link_to 'Contribute', '#', data: {toggle: 'modal', target: '#myModal'} %>
         &nbsp;&nbsp;
+        <%= link_to 'About', about_path %>
       </div>
+
     </header>
+
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -44,23 +46,20 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
-            <h4 class="modal-title" id="myModalLabel">Contribute Your Quote</h4>
+            <h4 class="modal-title" id="myModalLabel">Contribute your quote.</h4>
           </div>
-             <%= simple_form_for Quote.new do |f| %>
-              <div class="modal-body">
-                <%= f.input :saying, label: "What is the saying you want to add?", placeholder: "Fear is the disease. Hustle is the antidote." %>
-                  <br />
-                <%= f.input :author, label: "Who is the author of the quote?", placeholder: "Travis Kalanick" %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <%= f.submit 'Create', class: 'btn btn-danger' %>
-              </div>
-            <% end %>
-          </div>
+          <%= simple_form_for Quote.new do |f| %>
+            <div class="modal-body">
+              <%= f.input :saying, label: "What is the quote you want to add?", placeholder: "We are the Crystal Gems." %>
+              <br />
+              <%= f.input :author, label: "Who is the author of the quote?", placeholder: "Steven Universe" %>
+              <br />
+              <%= f.submit 'Create', class: 'btn btn-danger' %>
+            </div>
+          <% end %>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            
           </div>
         </div>
       </div>
@@ -68,8 +67,8 @@
 
     <hr />
 
-    <br class="clear" />
-    
+    <br class="clear"/>
+
     <div class="container">
       <% if flash[:error].present? %>
         <div class="col-10 offset-1 alert alert-danger">
@@ -79,19 +78,18 @@
       <%= yield %>
     </div>
 
-    <div class="footer">
+    <div class ="footer">
       <div class="container">
         <div class="row">
-           <div class="col-12 col-sm-6">
-                <%= link_to "This isn't enough, I need more", root_path, class: 'next-quote' %>
-            </div>
-              <div class="col-12 col-sm-6 footer-blurb">
-                Proudly hacked by <a href="[https://splurty-dan-vega.herokuapp.com/]">Dan Vega</a><br />
-                Want to build your own Splurty Web App - <a href="https://online.bootcampspot.com">Learn how to code here</a>
-              </div>
+          <div class="col-12 col-sm-6">
+            <%= link_to "Give me another quote.", root_path, class: 'next-quote' %>
+          </div>
+          <div class="col-12 col-sm-6 footer-blurb">
+            Created by B.K., meep-morp connoisseur.
+          </div>
         </div>
       </div>
     </div>
-    
+
   </body>
 </html>
